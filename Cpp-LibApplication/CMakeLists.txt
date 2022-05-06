@@ -1,0 +1,28 @@
+﻿cmake_minimum_required(VERSION 3.21)
+
+# set the name of project
+project(PROJECT_NAME)
+
+# add the path of local cmake scripts
+list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake)
+
+# remember replace XXX to the proper name
+include(Global_Options)
+
+list(APPEND XXX_DEFINITIONS XXX_ROOT_PATH="${CMAKE_CURRENT_SOURCE_DIR}")
+
+# add third party libraries
+add_subdirectory(third_party)
+
+# add the library
+add_subdirectory(THE_LIB)
+
+if(XXX_BUILD_APPS)
+    # add applications
+    add_subdirectory(apps)
+endif()
+
+if(XXX_BUILD_TESTS)
+    # add tests
+    add_subdirectory(tests)
+endif()
