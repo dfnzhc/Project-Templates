@@ -26,7 +26,7 @@
 #include <limits>
 #include <set>
 
-#ifdef XXX_IN_WINDOWS
+#ifdef PROJ_IN_WINDOWS
 #include <Windows.h>
 #include <winnt.h>
 #include <windowsx.h>

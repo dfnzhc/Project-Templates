@@ -1,11 +1,11 @@
 ﻿cmake_minimum_required(VERSION 3.21)
 
 # set the name of project
-project(THE_LIB_NAME LANGUAGES C CXX)
+project(${THE_LIB_NAME} LANGUAGES C CXX)
 
 set(COMMON_FILES
         # header files
-        common/logger.hpp
+        pch.hpp
         )
 
 # set the group of the source files
@@ -20,10 +20,10 @@ set_source_files_properties(${PROJECT_FILES} PROPERTIES LANGUAGE CXX)
 
 add_library(${PROJECT_NAME} STATIC ${PROJECT_FILES})
 
-target_compile_definitions(${PROJECT_NAME} PRIVATE ${XXX_DEFINITIONS})
+target_compile_definitions(${PROJECT_NAME} PRIVATE ${${DEFINES_PREFIX}_DEFINITIONS})
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.hpp)
 
-if(${XXX_WARNING_AS_ERROR})
+if(${${DEFINES_PREFIX}_WARNING_AS_ERROR})
     message(STATUS "Warnings as Errors Enabled")
     if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang" OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
         target_compile_options(${PROJECT_NAME} PRIVATE -Werror)
@@ -33,7 +33,7 @@ if(${XXX_WARNING_AS_ERROR})
 endif()
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
-target_link_libraries(${PROJECT_NAME} 
-        PUBLIC
-        spdlog
-        )
+#target_link_libraries(${PROJECT_NAME} 
+#        PUBLIC
+#        spdlog
+#        )

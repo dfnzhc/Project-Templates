@@ -6,17 +6,10 @@
 
 #include <catch2/catch.hpp>
 #include <filesystem>
-#include "common/logger.hpp"
 
 namespace fs = std::filesystem;
 
 TEST_CASE("test", "[TestLog]")
 {
-    XXX::Log log;
-
-    LOG_TRACE("123");
-    LOG_DEBUG("123");
-    LOG_INFO("123");
-    LOG_WARN("123");
-    LOG_ERROR("123");
+    int abc = 1;
 }
